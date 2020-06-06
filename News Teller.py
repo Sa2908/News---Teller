@@ -6,6 +6,15 @@ def speak(str):
     speak.Speak(str)
 
 if __name__ == '__main__':
+        try:
+        a = requests.get("https://www.youtube.com")    # Just to check your internet connection !
+
+    except Exception as e :
+        print("Try Checking your Internet Connection!!")
+        speak("Try Checking your Internet Connection!!")
+        exit()      
+    
+    
     speak("News for today.. Lets begin now")
     print("What Category news do you want to listen :")
     speak("What Category news do you want to listen :")
@@ -48,8 +57,9 @@ if __name__ == '__main__':
 
 
     c = 0
+    country  = " " #Enter Your country abbreviation here
     api_key = "              "      # Enter your api key which you get from newsapi.org
-    url = f"http://newsapi.org/v2/top-headlines?country=in{cat1}&apiKey={api_key}"
+    url = f"http://newsapi.org/v2/top-headlines?country={country}{cat1}&apiKey={api_key}"
     news = requests.get(url).text
     news_dict = json.loads(news)
     arts = news_dict['articles']
